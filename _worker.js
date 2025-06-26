@@ -530,9 +530,9 @@ export default {
 		) {
 			// 提取镜像名
 			let repo = '';
-			const v2Match = url.pathname.match(/^\/v2\/([^/]+)(?:\/([^/]+))?/);
+			const v2Match = url.pathname.match(/^\/v2\/(.+?)(?:\/(manifests|blobs|tags)\/)/);
 			if (v2Match) {
-				repo = v2Match[2] ? `${v2Match[1]}/${v2Match[2]}` : v2Match[1];
+				repo = v2Match[1];
 			}
 			if (repo) {
 				const tokenUrl = `${auth_url}/token?service=registry.docker.io&scope=repository:${repo}:pull`;
